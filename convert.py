@@ -40,9 +40,7 @@ SUPPORTED = {
 }
 
 
-# --------------------------------------------------------------------------- #
-# Converters
-# --------------------------------------------------------------------------- #
+# 
 def pdf_to_docx(src: Path, dst: Path) -> None:
     from pdf2docx import Converter
 
@@ -89,9 +87,6 @@ def legacy_to_modern(src: Path, workdir: Path) -> Path:
     return out
 
 
-# --------------------------------------------------------------------------- #
-# Dispatcher
-# --------------------------------------------------------------------------- #
 def convert(src: Path, to: str, dst: Path | None = None) -> Path:
     ext = src.suffix.lower()
     if ext not in SUPPORTED:
@@ -130,9 +125,6 @@ def iter_inputs(path: Path, recursive: bool):
             yield p
 
 
-# --------------------------------------------------------------------------- #
-# CLI
-# --------------------------------------------------------------------------- #
 def main() -> int:
     ap = argparse.ArgumentParser(
         description="Convert PDF -> Word/Markdown, Word -> Markdown, PowerPoint -> Markdown."
